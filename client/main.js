@@ -36,12 +36,13 @@ class Form extends React.Component {
     }
 
     render() {
+        console.log('render');
         return(
             <form className="form" onSubmit={this.handleSubmit}>
                 <ol>
                     <div className="row_fields_form">
-                        <input className="title" type="text" name="title" placeholder="Название" value={this.state.title} onChange={this.handleFieldChange.bind(this, 'title'+this.state.amount)} />
-                        <input className="description" type="text" name="description" placeholder="Описание" onChange={this.handleFieldChange.bind(this, 'description'+this.state.amount)} />
+                        <input className="title" type="text" name="title" placeholder="Название" value={this.state['title'+this.state.amount]} onChange={this.handleFieldChange.bind(this, 'title'+this.state.amount)} />
+                        <input className="description" type="text" name="description" placeholder="Описание" value={this.state['description'+this.state.amount]} onChange={this.handleFieldChange.bind(this, 'description'+this.state.amount)} />
                     </div>
                 </ol>
                 <input type="submit" value="Создать" />
@@ -50,7 +51,6 @@ class Form extends React.Component {
         )
     }
 }
-
 
 class App extends React.Component {
     constructor(props) {
