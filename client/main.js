@@ -33,12 +33,15 @@ class Form extends React.Component {
 
     handleDelField(e) {
         e.preventDefault();
-        delete this.state['title'+this.state.amount];
-        delete this.state['description'+this.state.amount];
-        this.setState({
-            amount: --this.state.amount
-        });
-        this.fields_group.pop();
+        if(this.state.amount > 1){
+            delete this.state['title'+this.state.amount];
+            delete this.state['description'+this.state.amount];
+            this.setState({
+                amount: --this.state.amount
+            });
+            this.fields_group.pop();
+            --this.count;
+        }
         console.log(this.state.amount);
     }
 
