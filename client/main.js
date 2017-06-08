@@ -31,8 +31,9 @@ class Form extends React.Component {
         });
     }
 
-    handleDelField(e) {
-        e.preventDefault();
+    handleDelField(event) {
+        event.preventDefault();
+        console.log(event);
         if(this.state.amount > 1){
             delete this.state['title'+this.state.amount];
             delete this.state['description'+this.state.amount];
@@ -42,7 +43,8 @@ class Form extends React.Component {
             this.fields_group.pop();
             --this.count;
         }
-        console.log(this.state.amount);
+        const formData = new Form(document.querySelector('div'));
+        console.log(formData)
     }
 
     handleSubmit(e) {
@@ -59,13 +61,14 @@ class Form extends React.Component {
                     <div className="row_fields_form">
                         <input className="title" type="text" name={'title'+this.state.amount} placeholder="Название" onChange={this.handleFieldChange.bind(this, 'title'+this.state.amount)} />
                         <input className="description" type="text" name={'description'+this.state.amount} placeholder="Описание" onChange={this.handleFieldChange.bind(this, 'description'+this.state.amount)} />
+                        <button name={'delete_btn'+this.state.amount} onClick={this.handleDelField}>-</button>
                     </div>
                 );
                 this.count++;
         }
 
         const list_fields = this.fields_group.map((field, i) =>
-            <li key={i}>{ field } </li>
+            <li key={i}> { field } </li>
         );
 
         console.log('render');
