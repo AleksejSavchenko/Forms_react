@@ -1,11 +1,32 @@
 import React from 'react';
 
+class Search extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            search: this.props.search
+        }
+    }
+
+    handleSearch(e){
+        this.setState({
+            search: e.target.value
+        })
+    }
+
+    render(){
+        return(
+            <input type="text" placeholder="Search..." onChange={this.handleSearch.bind(this)} />
+        )
+    }
+}
+
 class Note extends React.Component {
     render(){
         let style = { backgroundColor: this.props.color };
         return (
             <div className="note" style={style}>
-                <span className="delete-note" onClick={this.props.onDelete}> × </span>
+                <span className="delete-note" onClick={this.props.onDelete}> x </span>
                 {this.props.children}
             </div>
         );
@@ -129,6 +150,7 @@ class NotesApp extends React.Component {
         return (
             <div className="notes-app">
                 <h2 className="app-header">NotesApp</h2>
+                <Search notes={this.state.notes} />
                 <NoteEditor onNoteAdd={this.handleNoteAdd.bind(this)} />
                 <NotesGrid notes={this.state.notes} onNoteDelete={this.handleNoteDelete.bind(this)} />
             </div>
