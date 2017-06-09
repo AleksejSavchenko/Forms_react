@@ -38,7 +38,7 @@ class Timer extends React.Component {
     }
 
     render() {
-            let text = this.state.isPaused ? 'Pause' : 'Start';
+            let text = this.state.isPaused ? 'Start' : 'Pause';
 
         return (
             <div className="timer">
