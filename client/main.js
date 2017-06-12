@@ -8,7 +8,7 @@ class App extends React.Component {
         return (
             <div>
                 <NotesApp/>
-                <Timer/>
+                {/*<Timer/>*/}
             </div>
         );
     }
