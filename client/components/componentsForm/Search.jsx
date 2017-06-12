@@ -4,19 +4,18 @@ class Search extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            search: this.props.search
-        }
+            notes: this.props.notes
+        };
     }
 
-    handleSearch(e){
-        this.setState({
-            search: e.target.value
-        })
+    handleSearch(e) {
+        let searchQuery = e.target.value.toLowerCase();
+        this.props.updateNotes(searchQuery);
     }
 
     render(){
         return(
-            <input type="text" placeholder="Search..." onChange={this.handleSearch.bind(this)} />
+            <input className="search" type="text" placeholder="Search..." onChange={this.handleSearch.bind(this)} />
         )
     }
 }
